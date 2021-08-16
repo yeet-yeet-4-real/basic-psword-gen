@@ -39,8 +39,6 @@ class Password:
                 print('-------------')
                 print('Latest saved password:', content[-1])
 
-        
-
     def main(self) -> None:
         for _ in range(0, random.randrange(5, 20)):
             gen_password = random.choice(self.chars)
