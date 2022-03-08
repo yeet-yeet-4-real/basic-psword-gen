@@ -14,11 +14,12 @@ class Password:
         return len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{7,20}', password)) or (len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{9,20}', password)))
 
     # Unnecessary
+    '''
     def is_weak(self, password) -> bool:
         if not self.is_strong(password):
             return not self.is_strong(password)
         return False
-
+    '''
     def save_to_file(self, file):
         with open(file, 'a') as password_file:
             if self.is_strong(self.password):
