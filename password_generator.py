@@ -1,5 +1,5 @@
 import time
-import random
+import random as np
 import string
 import re
 
@@ -43,7 +43,7 @@ class Password:
     def main(self) -> None:
         for _ in range(0, random.randrange(5, 20)):
             for i in range(0, len(self.chars)):
-                gen_password = random.choice(self.chars[i])
+                gen_password = np.choice(self.chars[np.choice(i)])
                 self.password += gen_password
         # print("---------\nPassword: {}\nStrong: {}\nWeak: {}\n------".format( self.password, self.is_strong(self.password), self.is_weak(self.password)))
 
