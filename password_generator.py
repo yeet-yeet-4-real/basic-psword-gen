@@ -8,7 +8,7 @@ class Password:
     def __init__(self):
         self.password = ''
         self.mid_len = 9
-        self.chars = string.ascii_letters + string.digits + string.punctuation
+        self.chars = [string.ascii_letters, string.digits, string.punctuation]
 
     def is_strong(self, password) -> bool:
         return len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{7,20}', password)) or (len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{9,20}', password)))
@@ -42,9 +42,10 @@ class Password:
 
     def main(self) -> None:
         for _ in range(0, random.randrange(5, 20)):
-            gen_password = random.choice(self.chars)
-            self.password += gen_password
-        print("----------------------\nPassword: {}\nStrong: {}\nWeak: {}\n----------------------".format( self.password, self.is_strong(self.password), self.is_weak(self.password)))
+            for i in range(0, len(self.chars)):
+                gen_password = random.choice(self.chars[i])
+                self.password += gen_password
+        # print("---------\nPassword: {}\nStrong: {}\nWeak: {}\n------".format( self.password, self.is_strong(self.password), self.is_weak(self.password)))
 
 file = 'passwords.txt'
 password = Password()
