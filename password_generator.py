@@ -10,7 +10,7 @@ class Password:
         self.mid_len = 9
         self.chars = [string.ascii_letters, string.digits, string.punctuation]
 
-    def is_strong(self, password) -> bool:
+    def is_strong(self, password) -> Bool:
         return len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{7,20}', password)) or (len(password) >= self.mid_len and bool(re.match(r'(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{9,20}', password)))
 
     # Unnecessary
@@ -20,7 +20,7 @@ class Password:
             return not self.is_strong(password)
         return False
     '''
-    def save_to_file(self, file):
+    def save_to_file(self, file) -> None:
         with open(file, 'a') as password_file:
             if self.is_strong(self.password):
                 password_file.write(self.password + '\n')
@@ -28,6 +28,8 @@ class Password:
             else:
                 print('Password is weak, therefore has not been saved')
                 return -1
+         
+        return
 
     def get_passwords(self, file) -> None:
         with open(file, 'r') as f:
@@ -40,11 +42,13 @@ class Password:
                 print('-------------')
                 print('Latest saved password:', content[-1])
 
-    def main(self) -> None:
+    def main(self) -> Str:
         for _ in range(0, random.randrange(5, 20)):
             for i in range(0, len(self.chars)):
                 gen_password = np.choice(self.chars[np.choice(i)])
                 self.password += gen_password
+                
+        return self.password
         # print("---------\nPassword: {}\nStrong: {}\nWeak: {}\n------".format( self.password, self.is_strong(self.password), self.is_weak(self.password)))
 
 file = 'passwords.txt'
